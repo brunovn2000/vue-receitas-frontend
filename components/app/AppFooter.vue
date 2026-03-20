@@ -60,9 +60,6 @@
 
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
         <p class="mb-0">&copy; {{ new Date().getFullYear() }} Comunidade de Receitas. Todos os direitos reservados.</p>
-        <p class="mb-0 mt-2 mt-md-0">
-          Feito com <i class="bi bi-heart-fill text-danger mx-1"></i> pelos amantes de código e comida.
-        </p>
       </div>
     </div>
   </footer>

@@ -89,6 +89,16 @@ const onSubmit = async () => {
     return
   }
 
+  if (form.senha.length < 6) {
+    errorMessage.value = 'A senha deve ter pelo menos 6 caracteres.'
+    return
+  }
+
+  if (form.login.length < 3 || form.nome.length  < 3) {
+    errorMessage.value = 'O login e o nome devem ter pelo menos 3 caracteres.'
+    return
+  }
+
   pending.value = true
 
   try {

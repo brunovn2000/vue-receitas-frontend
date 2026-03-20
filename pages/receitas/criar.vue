@@ -1,23 +1,27 @@
 <template>
-  <main>
-    <section class="py-5 text-center container">
-      <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Criar Receita</h1>
-          <p class="lead text-body-secondary">
-            Compartilhe sua nova receita com a comunidade.
-          </p>
-        </div>
+  <main class="bg-light min-vh-100">
+    <!-- Banner de Criação -->
+    <div class="recipe-banner d-flex align-items-center justify-content-center text-center p-5">
+      <div class="banner-overlay"></div>
+      <div class="banner-content position-relative text-white">
+        <h1 class="display-4 fw-bold mb-2">Criar Receita</h1>
+        <p class="lead opacity-75">Compartilhe sua nova receita com a comunidade.</p>
       </div>
-    </section>
+    </div>
 
-    <div class="album py-5 bg-body-tertiary pb-5">
-      <div class="container bg-white p-5 rounded shadow-sm">
-        <RecipeForm 
-          :is-submitting="pending"
-          :error="error"
-          @submit="onSubmit"
-        />
+    <div class="container pb-5">
+      <div class="row justify-content-center mt-n5 position-relative z-1">
+        <div class="col-lg-10">
+          <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="card-body p-0">
+              <RecipeForm 
+                :is-submitting="pending"
+                :error="error"
+                @submit="onSubmit"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -47,3 +51,32 @@ const onSubmit = async (formData: FormData) => {
   }
 }
 </script>
+
+<style scoped>
+.recipe-banner {
+  height: 350px;
+  background-image: url('/img/banner-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+
+.banner-content {
+  z-index: 2;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.mt-n5 {
+  margin-top: -5rem !important;
+}
+
+.z-1 {
+  z-index: 10;
+}
+</style>
