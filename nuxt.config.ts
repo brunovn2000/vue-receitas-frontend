@@ -5,6 +5,7 @@ export default defineNuxtConfig({
 
   css: [
     'bootstrap/dist/css/bootstrap.min.css',
+    'bootstrap-icons/font/bootstrap-icons.css',
     '~/assets/scss/main.scss',
   ],
 
@@ -26,6 +27,7 @@ export default defineNuxtConfig({
   nitro: {
     routeRules: {
       '/api/v1/**': { proxy: 'http://localhost:3000/api/v1/**' },
+      '/': { redirect: '/receitas' },
     },
   },
 })
