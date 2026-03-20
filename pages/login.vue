@@ -11,10 +11,10 @@
       <div class="card shadow border-0">
         <div class="card-body p-4 p-md-5">
           <div
-            class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-4"
-            style="width: 72px; height: 72px;"
+            class="d-flex align-items-center justify-content-center mx-auto mb-4"
+            style="width: 120px; height: 120px;"
           >
-            <span class="fs-3">👤</span>
+            <img src="/img/logo.png" alt="Receitas RG Logo" class="img-fluid">
           </div>
 
           <AuthLoginForm />
