@@ -13,3 +13,9 @@ export interface AuthUser {
   nome: string
   login: string
 }
+
+export interface RegisterPayload {
+  nome: string
+  login: string
+  senha: string
+}

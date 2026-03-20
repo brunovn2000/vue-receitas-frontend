@@ -2,28 +2,28 @@
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-5">
       <div class="text-center mb-4">
-        <h1 class="h3 fw-bold">Acessar sistema</h1>
+        <h1 class="h3 fw-bold">Criar nova conta</h1>
         <p class="text-muted mb-0">
-          Entre para gerenciar receitas e acessar funcionalidades privadas.
+          Cadastre-se para começar a gerenciar suas receitas.
         </p>
       </div>
 
       <div class="card shadow border-0">
         <div class="card-body p-4 p-md-5">
           <div
-            class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-4"
+            class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-4"
             style="width: 72px; height: 72px;"
           >
-            <span class="fs-3">👤</span>
+            <span class="fs-3">📝</span>
           </div>
 
-          <AuthLoginForm />
+          <AuthRegisterForm />
 
           <div class="text-center mt-4">
             <p class="mb-0 small text-muted">
-              Não tem uma conta?
-              <NuxtLink to="/register" class="text-primary fw-bold text-decoration-none">
-                Cadastre-se
+              Já tem uma conta?
+              <NuxtLink to="/login" class="text-primary fw-bold text-decoration-none">
+                Entre agora
               </NuxtLink>
             </p>
           </div>

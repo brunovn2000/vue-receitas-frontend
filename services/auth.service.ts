@@ -1,9 +1,16 @@
-import type { AuthTokens, LoginPayload, AuthUser } from '~/types/auth'
+import type { AuthTokens, LoginPayload, AuthUser, RegisterPayload } from '~/types/auth'
 import { api } from './api'
 
 export const authService = {
   login(payload: LoginPayload) {
     return api<AuthTokens>('/auth/login/', {
+      method: 'POST',
+      body: payload,
+    })
+  },
+
+  register(payload: RegisterPayload) {
+    return api<AuthUser>('/users/', {
       method: 'POST',
       body: payload,
     })
