@@ -30,6 +30,12 @@ export default defineNuxtConfig({
       '/': { redirect: '/receitas' },
     },
   },
+
+  vite: {
+    optimizeDeps: {
+      include: ['html2pdf.js'],
+    },
+  },
 })
 
 

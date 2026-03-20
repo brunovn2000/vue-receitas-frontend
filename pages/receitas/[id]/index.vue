@@ -41,93 +41,94 @@
         </div>
       </nav>
 
-      <!-- Recipe Header Card -->
-      <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5 animate-fade-in">
-        <div class="row g-0">
-          <div class="col-lg-5">
-            <div class="h-100 bg-white d-flex align-items-center justify-content-center p-3">
-              <img 
-                v-if="recipe.imagem" 
-                :src="recipe.imagem" 
-                :alt="recipe.nome" 
-                class="img-fluid rounded-3 shadow-sm object-fit-cover w-100" 
-                style="max-height: 450px; min-height: 300px;"
-              >
-              <div v-else class="w-100 h-100 bg-light rounded-4 d-flex flex-column align-items-center justify-content-center py-5 text-muted opacity-50" style="min-height: 300px;">
-                <i class="bi bi-egg-fried display-1"></i>
-                <p class="mt-3">Aguardando registro visual</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <div class="card-body p-4 p-xl-5 h-100 d-flex flex-column justify-content-center bg-white">
-              <div class="mb-3">
-                <span v-if="recipe.categoria" class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 mb-2">
-                  <i class="bi bi-tag-fill me-1"></i> {{ recipe.categoria.nome }}
-                </span>
-                <h1 class="display-5 fw-bold text-dark mb-2">{{ recipe.nome }}</h1>
-                <div class="d-flex align-items-center text-muted small mt-3">
-                  <div class="d-flex align-items-center me-4">
-                    <i class="bi bi-person-circle fs-5 me-2 text-primary"></i>
-                    <span>Por <strong class="text-dark">{{ recipe.usuario?.nome || 'Comunidade' }}</strong></span>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-calendar3 me-2"></i>
-                    <span>{{ formatDate(recipe.criadoEm) }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <hr class="my-4 opacity-25">
-
-              <div class="row text-center g-3">
-                <div class="col-6 col-sm-4 text-start border-end pe-4">
-                  <div class="text-secondary small text-uppercase fw-bold mb-1">Preparo</div>
-                  <div class="h4 mb-0 fw-bold text-dark">
-                    <i class="bi bi-clock me-2 text-primary"></i>
-                    {{ recipe.tempoPreparoMinutos }}'
-                  </div>
-                </div>
-                <div class="col-6 col-sm-4 text-start">
-                  <div class="text-secondary small text-uppercase fw-bold mb-1">Rendimento</div>
-                  <div class="h4 mb-0 fw-bold text-dark">
-                    <i class="bi bi-people me-2 text-primary"></i>
-                    {{ recipe.porcoes }} <span class="fs-6 fw-normal">un</span>
-                  </div>
+      <!-- Seção Imprimível -->
+      <div id="printable-recipe-content" class="bg-white p-3 rounded-4">
+        <!-- Recipe Header Card -->
+        <div class="card border-0 shadow-none mb-5 animate-fade-in">
+          <div class="row g-0 align-items-center">
+            <div class="col-lg-5">
+              <div class="h-100 bg-white d-flex align-items-center justify-content-center p-3">
+                <img 
+                  v-if="recipe.imagem" 
+                  :src="recipe.imagem" 
+                  :alt="recipe.nome" 
+                  class="img-fluid rounded-3 shadow-sm object-fit-cover w-100" 
+                  style="max-height: 400px; min-height: 250px;"
+                >
+                <div v-else class="w-100 h-100 bg-light rounded-4 d-flex flex-column align-items-center justify-content-center py-5 text-muted opacity-50" style="min-height: 250px;">
+                  <i class="bi bi-egg-fried display-1"></i>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+            <div class="col-lg-7">
+              <div class="card-body p-4 p-xl-5 h-100 d-flex flex-column justify-content-center bg-white">
+                <div class="mb-3">
+                  <span v-if="recipe.categoria" class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2 mb-2">
+                    {{ recipe.categoria.nome }}
+                  </span>
+                  <h1 class="display-5 fw-bold text-dark mb-2">{{ recipe.nome }}</h1>
+                  <div class="d-flex align-items-center text-muted small mt-3">
+                    <div class="d-flex align-items-center me-4">
+                      <i class="bi bi-person-circle fs-5 me-2 text-primary"></i>
+                      <span>Por <strong class="text-dark">{{ recipe.usuario?.nome || 'Comunidade' }}</strong></span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-calendar3 me-2"></i>
+                      <span>{{ formatDate(recipe.criadoEm) }}</span>
+                    </div>
+                  </div>
+                </div>
 
-      <!-- Recipe Content Grid -->
-      <div id="recipe-content" class="row g-4">
-        <!-- Ingredients Section -->
-        <div class="col-lg-4">
-          <div class="card border-0 shadow-sm rounded-4 h-100">
-            <div class="card-body p-4">
-              <h4 class="fw-bold mb-4 d-flex align-items-center">
-                <i class="bi bi-list-check text-primary me-2"></i>
-                Ingredientes
-              </h4>
-              <div class="ingredients-list whitespace-pre-line text-secondary lh-lg fs-5">
-                {{ recipe.ingredientes || 'Nenhum ingrediente informado.' }}
+                <hr class="my-4 opacity-25">
+
+                <div class="row text-center g-3">
+                  <div class="col-6 col-sm-4 text-start border-end pe-4">
+                    <div class="text-secondary small text-uppercase fw-bold mb-1">Preparo</div>
+                    <div class="h4 mb-0 fw-bold text-dark">
+                      <i class="bi bi-clock me-2 text-primary"></i>
+                      {{ recipe.tempoPreparoMinutos }}'
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 text-start">
+                    <div class="text-secondary small text-uppercase fw-bold mb-1">Rendimento</div>
+                    <div class="h4 mb-0 fw-bold text-dark">
+                      <i class="bi bi-people me-2 text-primary"></i>
+                      {{ recipe.porcoes }} <span class="fs-6 fw-normal">un</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Mode of Preparation Section -->
-        <div class="col-lg-8">
-          <div class="card border-0 shadow-sm rounded-4 h-100">
-            <div class="card-body p-4 p-xl-5">
-              <h4 class="fw-bold mb-4 d-flex align-items-center">
-                <i class="bi bi-journal-text text-primary me-2"></i>
-                Modo de Preparo
-              </h4>
-              <div class="preparation-steps whitespace-pre-line text-secondary lh-lg fs-5">
-                {{ recipe.modoPreparo }}
+        <div class="row g-4">
+          <!-- Ingredients Section -->
+          <div class="col-lg-4">
+            <div class="card border-0 bg-light rounded-4 h-100">
+              <div class="card-body p-4">
+                <h4 class="fw-bold mb-4 d-flex align-items-center">
+                  <i class="bi bi-list-check text-primary me-2"></i>
+                  Ingredientes
+                </h4>
+                <div class="ingredients-list whitespace-pre-line text-secondary lh-lg fs-5">
+                  {{ recipe.ingredientes || 'Nenhum ingrediente informado.' }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode of Preparation Section -->
+          <div class="col-lg-8">
+            <div class="card border-0 bg-light rounded-4 h-100">
+              <div class="card-body p-4 p-xl-5">
+                <h4 class="fw-bold mb-4 d-flex align-items-center">
+                  <i class="bi bi-journal-text text-primary me-2"></i>
+                  Modo de Preparo
+                </h4>
+                <div class="preparation-steps whitespace-pre-line text-secondary lh-lg fs-5">
+                  {{ recipe.modoPreparo }}
+                </div>
               </div>
             </div>
           </div>
@@ -188,14 +189,14 @@ const formatDate = (dateStr: string) => {
 const handlePrint = async () => {
   isPrinting.value = true
   try {
-    const element = document.getElementById('recipe-content')
+    const element = document.getElementById('printable-recipe-content')
     if (element) {
       const opt = {
         margin:       0.5,
         filename:     `receita-${recipe.value?.nome || recipeId}.pdf`,
         image:        { type: 'jpeg' as const, quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        html2canvas:  { scale: 2, useCORS: true, logging: false, letterRendering: true },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
       }
       const html2pdf = (await import('html2pdf.js')).default
       await html2pdf().set(opt).from(element).save()
