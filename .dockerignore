@@ -1,0 +1,11 @@
+# .dockerignore
+node_modules
+.nuxt
+.output
+.git
+.github
+*.log
+dist
+README.md
+Dockerfile
+.dockerignore

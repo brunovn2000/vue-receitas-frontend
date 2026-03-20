@@ -1,75 +1,82 @@
-# Nuxt Minimal Starter
+# 🍳 Receitas Online - Frontend
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Bem-vindo ao **Receitas Online**, uma plataforma moderna e intuitiva para criação, gestão e compartilhamento de receitas culinárias. Este projeto foi desenvolvido como parte de um desafio técnico, focando em excelência visual, performance e boas práticas de desenvolvimento.
 
-## Setup
+🌐 **Acesse agora:** [receitas.brunovicente.cloud](https://receitas.brunovicente.cloud)
 
-Make sure to install dependencies:
+---
 
+## 🚀 Tecnologias Utilizadas
+
+Este projeto utiliza o que há de mais moderno no ecossistema Vue:
+
+- **Framework**: [Nuxt 3](https://nuxt.com/) (Vue 3) para SSR, performance e SEO.
+- **Linguagem**: TypeScript para segurança de tipos e melhor experiência de desenvolvimento.
+- **Estado**: [Pinia](https://pinia.vuejs.org/) para gerenciamento de estado global.
+- **Estilização**: [Bootstrap 5](https://getbootstrap.com/) + Custom SCSS para um design premium e responsivo.
+- **Ícones**: [Bootstrap Icons](https://icons.getbootstrap.com/).
+- **PDF**: [html2pdf.js](https://ekoopmans.github.io/html2pdf.js/) para exportação de receitas.
+- **Package Manager**: [pnpm](https://pnpm.io/) para instalações rápidas e eficientes.
+
+---
+
+## 🏛️ Escolhas Arquiteturais
+
+### 1. Separação de Repositórios (Decoupled Architecture)
+Optei por separar o **Frontend** do **Backend**. Isso permite que cada parte do sistema escale de forma independente, facilita a manutenção e permite que diferentes tecnologias sejam usadas em cada ponta. O frontend consome uma API RESTful robusta.
+
+### 2. UI/UX "Premium First"
+Diferente de MVPs básicos, este projeto foca em uma experiência visual rica:
+- **Split-Screen Authentication**: Telas de login e registro modernas com efeitos de vidro (glassmorphism) e imagens de alta qualidade.
+- **Hero Banners**: Banners dinâmicos em cada receita que trazem profundidade visual.
+- **Interatividade**: Feedback visual em tempo real, previews de imagens e animações de transição suaves.
+
+---
+
+## 🛠️ Como Rodar o Projeto
+
+### Pré-requisitos
+- Node.js (v18+)
+- pnpm
+
+### Instalação
 ```bash
-# npm
-npm install
-
-# pnpm
+# Instalar dependências
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+### Desenvolvimento
 ```bash
-# npm
-npm run dev
-
-# pnpm
+# Iniciar servidor local
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
+O projeto estará disponível em `http://localhost:3000`.
 
-## Production
+---
 
-Build the application for production:
+## 🐳 Docker Deployment
+
+Para rodar o projeto em um ambiente containerizado:
 
 ```bash
-# npm
-npm run build
+# Build da imagem
+docker build -t receitas-frontend .
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+# Rodar container
+docker run -p 3000:3000 receitas-frontend
 ```
 
-Locally preview production build:
+---
 
-```bash
-# npm
-npm run preview
+## 🛣️ Roadmap / TODO v2
 
-# pnpm
-pnpm preview
+Melhorias planejadas para futuras versões:
+- [ ] **Autenticação Social**: Integração com Google e GitHub.
+- [ ] **Busca Avançada**: Filtros por ingredientes, tempo de preparo e dificuldade.
+- [ ] **Sistema de Avaliação**: Comentários e estrelas em cada receita.
+- [ ] **PWA (Progressive Web App)**: Suporte para instalação e uso offline.
+- [ ] **Compartilhamento Social**: Botões para WhatsApp, Instagram e Pinterest.
 
-# yarn
-yarn preview
+---
 
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Desenvolvido por **Bruno Vicente** como teste técnico.
