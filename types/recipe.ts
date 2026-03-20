@@ -6,6 +6,10 @@ export interface Recipe {
     nome: string
     login: string
   } | null | undefined
+  categoria?: {
+    id: number
+    nome: string
+  } | null
   tempoPreparoMinutos: number
   porcoes: number
   modoPreparo: string
