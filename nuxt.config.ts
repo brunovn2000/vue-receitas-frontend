@@ -8,11 +8,9 @@ export default defineNuxtConfig({
     '~/assets/scss/main.scss',
   ],
 
-  modules: ['@pinia/nuxt'],
+  modules: ['@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt'],
 
   runtimeConfig: {
-    // Estas chaves serão sobrescritas automaticamente pelas variáveis
-    // NUXT_API_BASE e NUXT_PUBLIC_API_BASE definidas no arquivo .env
     apiBase: 'http://localhost:3000/api/v1',
     public: {
       apiBase: '/api/v1',

@@ -16,13 +16,6 @@ export const authService = {
     })
   },
 
-  refresh(refresh: string) {
-    return api<{ access: string }>('/auth/refresh/', {
-      method: 'POST',
-      body: { refresh },
-    })
-  },
-
   me() {
     return api<AuthUser>('/auth/me/', {
       method: 'GET',

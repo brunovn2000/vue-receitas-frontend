@@ -14,5 +14,14 @@ export const api = async <T>(path: string, options: any = {}): Promise<T> => {
       ? { Authorization: `Bearer ${authStore.access_token}` }
       : undefined,
     ...options,
+    onResponseError({ response }) {
+      if (response.status === 401 && authStore.isAuthenticated) {
+        authStore.logout()
+
+        if (import.meta.client) {
+          navigateTo('/login')
+        }
+      }
+    },
   })
 }
