@@ -33,65 +33,23 @@ definePageMeta({
 })
 
 const search = ref('')
-const pending = ref(false)
+const { items, pending, error, fetchRecipes } = useRecipes()
 
-const recipes = ref([
-  {
-    "id": 2,
-    "usuario": {
-      "id": 1,
-      "nome": "Admin",
-      "login": "admin"
-    },
-    "nome": "Bolo de cenoura",
-    "tempoPreparoMinutos": 60,
-    "porcoes": 4,
-    "modoPreparo": "Misture os ingredientes e asse por 40 minutos.",
-    "ingredientes": "Farinha, ovos, açúcar",
-    "criadoEm": "2023-01-01T00:00:00",
-    "alteradoEm": "2023-01-01T00:00:00",
-    "imagem": 'https://static.itdg.com.br/images/640-400/34b9fb585d6b2730ab91a3422a0e9d50/bolo-de-cenoura.jpg'
-  },
-  {
-    "id": 2,
-    "usuario": {
-      "id": 1,
-      "nome": "Admin",
-      "login": "admin"
-    },
-    "nome": "Bolo de cenoura",
-    "tempoPreparoMinutos": 60,
-    "porcoes": 4,
-    "modoPreparo": "Misture os ingredientes e asse por 40 minutos.",
-    "ingredientes": "Farinha, ovos, açúcar",
-    "criadoEm": "2023-01-01T00:00:00",
-    "alteradoEm": "2023-01-01T00:00:00",
-    "imagem": 'https://static.itdg.com.br/images/640-400/34b9fb585d6b2730ab91a3422a0e9d50/bolo-de-cenoura.jpg'
-  },
-  {
-    "id": 4,
-    "usuario": {
-      "id": 1,
-      "nome": "Admin",
-      "login": "admin"
-    },
-    "nome": "Bolo de cenoura",
-    "tempoPreparoMinutos": 60,
-    "porcoes": 4,
-    "modoPreparo": "Misture os ingredientes e asse por 40 minutos.",
-    "ingredientes": "Farinha, ovos, açúcar",
-    "criadoEm": "2023-01-01T00:00:00",
-    "alteradoEm": "2023-01-01T00:00:00",
-    "imagem": 'https://static.itdg.com.br/images/640-400/34b9fb585d6b2730ab91a3422a0e9d50/bolo-de-cenoura.jpg'
-  }
-])
+onMounted(() => {
+  fetchRecipes()
+})
+
+watch(search, (value) => {
+  fetchRecipes(value ? { search: value } : {})
+})
+
 
 const filteredRecipes = computed(() => {
   const term = search.value.trim().toLowerCase()
 
-  if (!term) return recipes.value
+  if (!term) return items.value
 
-  return recipes.value.filter(recipe =>
+  return items.value.filter(recipe =>
     recipe.nome.toLowerCase().includes(term) ||
     recipe.modoPreparo.toLowerCase().includes(term)
   )
