@@ -11,8 +11,23 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
 
   runtimeConfig: {
+    // Estas chaves serão sobrescritas automaticamente pelas variáveis
+    // NUXT_API_BASE e NUXT_PUBLIC_API_BASE definidas no arquivo .env
+    apiBase: 'http://localhost:3000/api/v1',
     public: {
-      apiBase: 'http://localhost:8000/api',
+      apiBase: '/api/v1',
+    },
+  },
+
+  components: [
+    { path: '~/components/app', pathPrefix: false },
+    { path: '~/components/recipes', pathPrefix: false },
+    '~/components',
+  ],
+
+  nitro: {
+    routeRules: {
+      '/api/v1/**': { proxy: 'http://localhost:3000/api/v1/**' },
     },
   },
 })

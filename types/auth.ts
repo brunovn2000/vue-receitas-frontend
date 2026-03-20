@@ -4,8 +4,8 @@ export interface LoginPayload {
 }
 
 export interface AuthTokens {
-  access: string
-  refresh: string
+  access_token: string
+  refresh_token: string
 }
 
 export interface AuthUser {

@@ -5,28 +5,28 @@ import { authService } from '~/services/auth.service'
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: null as AuthUser | null,
-    accessToken: null as string | null,
-    refreshToken: null as string | null,
+    access_token: null as string | null,
+    refresh_token: null as string | null,
   }),
 
   getters: {
-    isAuthenticated: state => !!state.accessToken,
+    isAuthenticated: state => !!state.access_token,
   },
 
   actions: {
     async login(payload: LoginPayload) {
       const tokens = await authService.login(payload)
 
-      this.accessToken = tokens.access
-      this.refreshToken = tokens.refresh
+      this.access_token = tokens.access_token
+      this.refresh_token = tokens.refresh_token
 
       this.user = await authService.me()
     },
 
     logout() {
       this.user = null
-      this.accessToken = null
-      this.refreshToken = null
+      this.access_token = null
+      this.refresh_token = null
     },
 
     async fetchMe() {
